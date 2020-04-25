@@ -1,5 +1,8 @@
 An application that makes shopping easier.
 
+Interactive version of prototype: 
+https://xd.adobe.com/view/934893cc-90ee-4378-76c0-a0fb1c8b8ddb-e579/
+
 
 COLOR PALETTE FOR PROJECT:
 BACKGROUND: #aee7ff
