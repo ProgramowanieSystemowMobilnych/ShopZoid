@@ -1,0 +1,17 @@
+/**COLOR PALETTE FOR PROJECT:
+BACKGROUND: #aee7ff
+NAVBAR: #FFFFFF
+TEXT FILL: #4891D3
+
+TEXT FONT: Lato
+ */
+
+body {
+    background-image: url("../img/shopping-basket-50-opacity.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: 20% auto;
+    background-color: #aee7ff;
+}
