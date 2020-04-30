@@ -11,7 +11,7 @@ TEXT FONT: Lato
     padding: 0;
     box-sizing: border-box;
 }
-body {
+body.default {
     background-image: url("../img/shopping-basket-50-opacity.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -89,7 +89,6 @@ form {
 ::placeholder{
     color: #4891D3;
 }
-
 .active-list{
     font-weight: 700;
     letter-spacing: 1px;
@@ -151,11 +150,9 @@ form {
     background: currentColor;
     opacity: 0.2;
 }
-
 .fancy-checkbox input[type="checkbox"] {
     display: none;
 }
-
 .fancy-checkbox span:before {
     font-family: "FontAwesome";
     font-style: normal;
@@ -164,7 +161,6 @@ form {
     content: '\f10c';
     margin-right: .3em;
 }
-
 .fancy-checkbox input[type="checkbox"]:checked ~ span:before {
     content: '\f05d';
 }
@@ -180,7 +176,6 @@ form {
     transform: scale(1);
     transition: transform 100ms ease-in-out;
 }
-
 .task:hover .custom-checkbox {
     transform: scale(1.1);
 }
@@ -191,7 +186,6 @@ form {
 [type="checkbox"]:checked + label {
     opacity: 0.5;
 }
-
 .task label::after {
     content: "";
     position: absolute;
@@ -221,4 +215,127 @@ form {
 }
 .btn.delete:hover {
     color: #336896;
+}
+/*SIGN UP PAGE*/
+body.signup{
+    background-color: #aee7ff;
+    font-family: "Lato", sans-serif;
+    color: #4891D3;
+    font-size: 18px;
+}
+.photo {
+    margin: auto;
+    position: center;
+    max-height: 40%;
+    max-width: 40%;
+    overflow: hidden;
+}
+.brand{
+    margin: auto;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.login{
+    height: 100%;
+    width: 100%;
+}
+#login{
+    left: 50px;
+}
+#register{
+    left: 530px;
+}
+.form-box{
+    width: 380px;
+    height: 540px;
+    position: relative;
+    margin: 6% auto;
+    background: #FFFFFF;
+    padding: 4px;
+    opacity: 0.8;
+    border-radius: 18px;
+    overflow: hidden;
+}
+/*MOVING BUTTON*/
+.button-box{
+    width: 240px;
+    margin: 10px auto;
+    position: relative;
+    box-shadow: 0 0 15px 1px #aee7ff;
+    border-radius: 20px;
+}
+.toggle-btn{
+    color:  #4891D3;
+    font-weight: bold;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#color-button{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 54%;
+    height: 100%;
+    background: #aee7ff;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.social-icons{
+    margin: 20px auto;
+    text-align: center;
+    width: 150px;
+    border-bottom: solid 1px #4891D3;
+}
+.social-icons i{
+    width: 40px;
+    position: relative;
+    cursor: pointer;
+}
+.input-group{
+    top: 320px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field{
+    width: 100%;
+    padding: 8px 0;
+    margin: 2px 0;
+    border: none;
+    border-bottom: 1px solid #4891D3;
+    outline: none;
+    background: transparent;
+    font-size: inherit;
+    transition: border-bottom 150ms ease-in;
+    padding: 0.25em;
+}
+.submit-button{
+    color: #4891D3;
+    font-weight: bold;
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: 15px;
+    background: #aee7ff;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+}
+#check {
+    opacity: 1;
+    position: relative;
+    margin: 10px 0 0 -2px;
+}
+#login-checkbox-span {
+    color:#4891D3;
+    font-size: 13px;
+    position: relative;
+    margin: 7px 8px;
 }
