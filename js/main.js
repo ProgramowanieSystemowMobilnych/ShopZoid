@@ -143,3 +143,5 @@ function clearElement(element){
     }
 }
 render()
+
+/*SIGN UP AND LOGIN PAGE*/
