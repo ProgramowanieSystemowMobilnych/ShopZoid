@@ -93,20 +93,23 @@ form {
     font-weight: 700;
     letter-spacing: 1px;
 }
-.todo-list{
+.all-tasks { /*LEFT COLUMN*/
     background: #e5fdff;
     top: 50px;
     opacity: 0.8;
     margin: 1%;
-    padding: 1%;
+    padding: 3%;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.all-tasks {
+.todo-list{ /*RIGHT COLUMN*/
     background: #e5fdff;
     top: 50px;
     opacity: 0.8;
     margin: 1%;
     padding: 1%;
-
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .todo-header {
     padding: 3%;
@@ -123,8 +126,8 @@ form {
     font-size: 0.8rem;
 }
 .todo-body{
-    margin-bottom: 3%;
-    padding: 4%;
+    margin-bottom: 15%;
+    padding: 1%;
     position: relative;
 }
 [type="checkbox"] {
@@ -209,11 +212,24 @@ form {
     position: absolute;
 }
 .btn.delete {
+    font-size: 25px;
     letter-spacing: 1px;
-    opacity: 0.8;
     transition: color 200ms;
+    margin: 6px 6px;
 }
 .btn.delete:hover {
+    color: #4891D3;
+}
+.btn-calendar {
+    background: none;
+    border: none;
+    color: #4891D3;
+    font-size: 20px;
+    letter-spacing: 1px;
+    transition: color 200ms;
+    margin: 6px 6px;
+}
+.btn-calendar:hover {
     color: #336896;
 }
 /*SIGN UP PAGE*/
@@ -257,6 +273,7 @@ body.signup{
     opacity: 0.8;
     border-radius: 18px;
     overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /*MOVING BUTTON*/
 .button-box{
