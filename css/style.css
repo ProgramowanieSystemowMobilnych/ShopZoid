@@ -1,8 +1,8 @@
 /**COLOR PALETTE FOR PROJECT:
-BACKGROUND: #aee7ff
+BACKGROUND, ACTIVE BUTTON: #aee7ff
 NAVBAR: #FFFFFF
 TEXT FILL: #4891D3
-LABELS: #e5fdff
+LABELS, SLEEPING BUTTONS: #e5fdff
 
 TEXT FONT: Lato
  */
@@ -334,16 +334,18 @@ body.signup{
 }
 .submit-button{
     color: #4891D3;
-    font-weight: bold;
     width: 85%;
     padding: 10px 30px;
     cursor: pointer;
-    display: block;
     margin: 15px;
-    background: #aee7ff;
+    background: #e5fdff;
     border: 0;
     outline: none;
     border-radius: 20px;
+}
+.submit-button:hover{
+    font-weight: bold;
+    background-color: #aee7ff;
 }
 #check {
     opacity: 1;
