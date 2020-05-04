@@ -11,17 +11,19 @@ TEXT FONT: Lato
     padding: 0;
     box-sizing: border-box;
 }
-body.default {
+body{
+    background-color: #aee7ff;
+    font-family: "Lato", sans-serif;
+    color: #4891D3;
+    font-size: 20px;
+}
+body.default{
     background-image: url("../img/shopping-basket-50-opacity.png");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: 26% auto;
-    background-color: #aee7ff;
-    font-family: "Lato", sans-serif;
-    color: #4891D3;
-    font-size: 20px;
 }
 .plus-icon{
     font-size: fa-2x;
@@ -80,10 +82,12 @@ form {
     transition: border-bottom 150ms ease-in;
     padding: 0.25em;
 }
-.new:focus {
+.new:focus,
+.input-field:focus {
     border-bottom-width: 3px;
 }
-.new:focus::placeholder {
+.new:focus::placeholder,
+.input-field:focus::placeholder {
     opacity: 0.2;
 }
 ::placeholder{
@@ -344,6 +348,7 @@ body.signup{
     border-radius: 20px;
 }
 .submit-button:hover{
+    color: inherit;
     font-weight: bold;
     background-color: #aee7ff;
 }
@@ -357,4 +362,43 @@ body.signup{
     font-size: 13px;
     position: relative;
     margin: 7px 8px;
+}
+/*CONTACT FORM*/
+.form-contact{
+    width: 50%;
+    height: 90%;
+    position: relative;
+    margin: 4% auto;
+    padding: 1%;
+    background: #FFFFFF;
+    opacity: 0.8;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#contact-h3{
+    font-weight: bold;
+    font-size: 24px;
+}
+/*CONTACT COLUMNS*/
+.left,
+.right {
+    justify-content: center;
+    text-align: center;
+}
+.left{
+    font-size: 18px;
+}
+.right{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/*RIGHT SIDE*/
+.photo-contact{
+    width: 65%;
+    margin-left: 17%;
+}
+.brand-contact{
+    font-size: 25px;
+    font-weight: bold;
 }
