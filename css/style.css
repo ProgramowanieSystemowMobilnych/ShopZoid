@@ -98,7 +98,7 @@ form {
     letter-spacing: 1px;
 }
 .all-tasks { /*LEFT COLUMN*/
-    background: #e5fdff;
+    background: #FFFFFF;
     top: 50px;
     opacity: 0.8;
     margin: 1%;
@@ -107,7 +107,7 @@ form {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .todo-list{ /*RIGHT COLUMN*/
-    background: #e5fdff;
+    background: #FFFFFF;
     top: 50px;
     opacity: 0.8;
     margin: 1%;
@@ -227,8 +227,9 @@ form {
 .btn-calendar {
     background: none;
     border: none;
+    width: 80%;
     color: #4891D3;
-    font-size: 20px;
+    font-size: 24px;
     letter-spacing: 1px;
     transition: color 200ms;
     margin: 6px 6px;
@@ -376,9 +377,17 @@ body.signup{
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#contact-h3{
+.tasks-list-title {
+    border-bottom: 1px solid #4891D3;
+    padding: 4px;
+}
+.contact-h3{
     font-weight: bold;
-    font-size: 24px;
+    font-size: 26px;
+}
+.tip {
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 /*CONTACT COLUMNS*/
 .left,
@@ -401,4 +410,7 @@ body.signup{
 .brand-contact{
     font-size: 25px;
     font-weight: bold;
+}
+.hidden{
+    display: none;
 }

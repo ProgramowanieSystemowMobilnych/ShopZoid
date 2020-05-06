@@ -16,6 +16,7 @@ const taskTemplate = document.getElementById('task-template')
 const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
 const clearCompleteTasksButton = document.querySelector('[data-delete-completed-tasks-button]')
+const dataNewList = document.querySelector('[btn-calendar]')
 //Save to local storage
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
@@ -96,11 +97,11 @@ function render() {
     //NAME RIGHT COLUMN AS ITS LIST NAME
     const selectedList = lists.find(list => list.id === selectedListId)
     //NO RENDER RIGHT LIST IF ITS EMPTY OR NOT SELECTED
-    if (selectedListId == null) {
+    if (selectedList === undefined) {
         listDisplayContainer.style.display = 'none'
     } else {
         listDisplayContainer.style.display = ''
-        listTitleElement.innerText = selectedList.name
+        listTitleElement.innerText = selectedList.name;
         renderTaskCount(selectedList)
         clearElement(tasksContainer)
         renderTasks(selectedList)

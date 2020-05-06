@@ -39,19 +39,20 @@
     <div class="container fluid">
         <div class="row">
             <div class="all-tasks col">
-                <h2 class="tasks-list-title">My Shopping Lists:</h2>
+                <h3 class="tasks-list-title">Your Shopping lists:</h3>
                 <ul class="task-list" data-lists></ul>
                 <!--ADD NEW LIST-->
                 <form action="" data-new-list-form>
                     <input type="text" class="new list" data-new-list-input placeholder="Add New List" aria-label="Add New List">
                     <button class="btn create" aria-label="Add New List">
+                        <input type="date" class="btn-calendar" id="today">
                         <i class="fa fa-plus-circle"></i>
                     </button>
                 </form>
             </div>
             <div class="todo-list col" data-list-display-container>
                 <div class="todo-header">
-                    <h2 class="list-title" data-list-title></h2>
+                    <h3 class="list-title" data-list-title></h3>
                     <p class="task-count" data-list-count></p>
                 </div>
                 <div class="todo-body">
@@ -65,11 +66,10 @@
                         </form>
                     </div>
                     <div class="delete-item">
-                        <input type="date" class="btn-calendar" id="today">
                         <button class="btn delete" data-delete-completed-tasks-button>
-                            <i class="fa fa-check-square-o"></i></button>
+                            <i class="fa fa-check-square-o"></i><text class="tip">Delete Completed Tasks</text></button>
                         <button class="btn delete" data-delete-list-button>
-                            <i class="fa fa-trash"></i></button>
+                            <i class="fa fa-trash"></i><text class="tip">Delete List</text></button>
                     </div>
                 </div>
             </div>
