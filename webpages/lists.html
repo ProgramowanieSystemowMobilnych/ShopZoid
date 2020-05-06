@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+        <script defer src="../js/lists.js"></script>
+        <!--FAVICONS-->
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+        <title>ShopZoid | My Lists</title>
+    </head>
+    <body class="default">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <button class="navbar-toggler navbar"
+                        aria-label="Menu"
+                        type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <a href="../index.html" class="nav-item nav-link">My Lists</a>
+                    <a href="NewList.html" class="nav-item nav-link">Create New List</a>
+                    <a href="#" class="nav-item nav-link">Create New/Edit Item</a>
+                    <a href="Calendar.html" class="nav-item nav-link">Calendar</a>
+                    <a href="Contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="User.html" class="nav-item nav-link ml-auto">Log Out</a>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="list-name-left col-md-5">
+                    <h3 class="list-title">Your shopping lists:</h3>
+                    <div class="list-input">
+                        <input type="text" id="listName" class="input-field" placeholder="List Name">
+                        <input type="date" id="listDate" class="input-field" placeholder="Date">
+                        <button onclick="addNewList()" class="button-add" button-add-new-list>
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+                    <ul id="dynamic-list">
+                    </ul>
+                </div>
+                <div class="product-list-right col-md-5">
+                    <h3 class="list-title">Your list of products:</h3>
+                    <div class="product-input">
+                        <input type="text" id="productName" class="input-field" placeholder="Product Name">
+                        <input type="number" id="quantity" class="input-field" placeholder="0">
+                        <input type="number" id="price" class="input-field" placeholder="0$">
+                        <button class="button-add" button-add-new-product>
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+                    <div class="total-cost">
+                        Total Cost: 0<small>$</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
