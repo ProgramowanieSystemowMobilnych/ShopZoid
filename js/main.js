@@ -7,7 +7,8 @@
 const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')
 const newListInput = document.querySelector('[data-new-list-input]')
-const deleteListButton = document.querySelector('[ data-delete-list-button]')
+const newListInputDate = document.querySelector('[data-new-list-input-date]')
+const deleteListButton = document.querySelector('[data-delete-list-button]')
 const listDisplayContainer = document.querySelector('[data-list-display-container]')
 const listTitleElement = document.querySelector('[data-list-title]')
 const listCountElement = document.querySelector('[data-list-count]')
@@ -15,6 +16,8 @@ const tasksContainer = document.querySelector('[data-tasks]')
 const taskTemplate = document.getElementById('task-template')
 const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
+const newTaskInputQuantity = document.querySelector('[data-new-task-input-quantity]')
+const newTaskInputPrice = document.querySelector('[data-new-task-input-price]')
 const clearCompleteTasksButton = document.querySelector('[data-delete-completed-tasks-button]')
 const dataNewList = document.querySelector('[btn-calendar]')
 //Save to local storage
@@ -53,7 +56,7 @@ deleteListButton.addEventListener('click', e =>{
 //ADD NEW LIST
 newListForm.addEventListener('submit', e =>{
     e.preventDefault()
-    const listName = newListInput.value
+    const listName = newListInput.value + ', Created: ' + newListInputDate.value
     if (listName == null || listName === '') return
     const list = createList(listName)
     newListInput.value = null
@@ -65,15 +68,17 @@ newListForm.addEventListener('submit', e =>{
 //Type new Item
 newTaskForm.addEventListener('submit', e =>{
     e.preventDefault()
-    const taskName = newTaskInput.value
+    var sumOfPrices = newTaskInputQuantity.value * newTaskInputPrice.value
+    const taskName = newTaskInput.value + ', Quantity: ' + newTaskInputQuantity.value + ', Cost: ' + sumOfPrices +'$'
     if (taskName == null || taskName === '') return
     const task = createTask(taskName)
     newTaskInput.value = null
+    newTaskInputQuantity.value = null
+    newTaskInputPrice.value = null
     const selectedList = lists.find(list => list.id === selectedListId)
     selectedList.tasks.push(task)
     saveAndRender()
 })
-
 
 function createList(name){
     return { id: Date.now().toString(), name: name, tasks: [] }

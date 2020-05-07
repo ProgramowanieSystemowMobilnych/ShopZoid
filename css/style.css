@@ -73,7 +73,8 @@ form {
     opacity: 0.8;
     color:inherit;
 }
-.new {
+.new-list,
+.list-numbers {
     background: transparent;
     border: none;
     color: inherit;
@@ -82,12 +83,18 @@ form {
     transition: border-bottom 150ms ease-in;
     padding: 0.25em;
 }
-.new:focus,
-.input-field:focus {
+.list-numbers{
+    width: 18%;
+    font-size: 15px;
+}
+.new-list:focus,
+.input-field:focus,
+.list-numbers:focus{
     border-bottom-width: 3px;
 }
-.new:focus::placeholder,
-.input-field:focus::placeholder {
+.new-list:focus::placeholder,
+.input-field:focus::placeholder
+.list-numbers:focus::placeholder {
     opacity: 0.2;
 }
 ::placeholder{
@@ -227,7 +234,7 @@ form {
 .btn-calendar {
     background: none;
     border: none;
-    width: 80%;
+    width: 205px;
     color: #4891D3;
     font-size: 24px;
     letter-spacing: 1px;
