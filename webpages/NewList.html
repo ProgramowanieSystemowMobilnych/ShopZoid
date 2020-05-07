@@ -25,12 +25,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <a href="../index.html" class="nav-item nav-link">My Lists</a>
-                <a href="NewList.html" class="nav-item nav-link">Create New List</a>
-                <a href="#" class="nav-item nav-link">Create New/Edit Item</a>
+                <a href="NewList.html" class="nav-item nav-link">My Lists</a>
                 <a href="Calendar.html" class="nav-item nav-link">Calendar</a>
                 <a href="Contact.html" class="nav-item nav-link">Contact</a>
-                <a href="User.html" class="nav-item nav-link ml-auto">Log Out</a>
+                <a href="../index.html" class="nav-item nav-link ml-auto">Log Out</a>
             </div>
         </nav>
     </header>
@@ -43,9 +41,9 @@
                 <ul class="task-list" data-lists></ul>
                 <!--ADD NEW LIST-->
                 <form action="" data-new-list-form>
-                    <input type="text" class="new list" data-new-list-input placeholder="Add New List" aria-label="Add New List">
+                    <input required type="text" class="new-list" data-new-list-input placeholder="Add New List" aria-label="Add New List">
+                    <input type="date" class="btn-calendar" data-new-list-input-date id="today">
                     <button class="btn create" aria-label="Add New List">
-                        <input type="date" class="btn-calendar" id="today">
                         <i class="fa fa-plus-circle"></i>
                     </button>
                 </form>
@@ -59,7 +57,9 @@
                     <div class="tasks" data-tasks></div>
                     <div class="new-task-creator">
                         <form action="" data-new-task-form>
-                            <input type="text" class="new list" data-new-task-input placeholder="Add New Item" aria-label="Add New Item">
+                            <input required type="text" class="new-list" data-new-task-input placeholder="Add New Item" aria-label="Add New Item">
+                            <input type="number" class="list-numbers" data-new-task-input-quantity placeholder="Quantity" aria-label="Quantity">
+                            <input type="number" class="list-numbers" data-new-task-input-price placeholder="Cost of one" aria-label="Price" min="0" step="0.01">
                             <button class="btn create" aria-label="Add New Item">
                                 <i class="fa fa-plus-circle"></i>
                             </button>
