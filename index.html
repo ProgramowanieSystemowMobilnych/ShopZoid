@@ -1,43 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <title>ShopZoid</title>
-</head>
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <button class="navbar-toggler navbar" aria-label="Menu" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <a href="#" class="nav-item nav-link active">My Shopping Lists</a>
-                <a href="#" class="nav-item nav-link">Add new List</a>
-                <a href="#" class="nav-item nav-link">Add new/Edit Item</a>
-                <a href="#" class="nav-item nav-link">Calendar</a>
-                <a href="#" class="nav-item nav-link">Contact</a>
-                <a href="#" class="nav-item nav-link">Log Out</a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+        <script defer src="js/main.js"></script>
+        <!--FAVICONS-->
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+        <title>ShopZoid | Sign Up or Just Log In</title>
+    </head>
+    <body class="signup">
+        <div class="container-fluid">
+            <div class="login col">
+                <div class="form-box">
+                    <div class="photo"><img src="img/shopping-basket.png" class="img-fluid" alt="ShopZoid"></div>
+                    <div class="brand">Shop Zoid</div>
+                    <div class="button-box">
+                        <div id="color-button"></div>
+                        <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                        <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                    </div>
+                    <div class="social-icons">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-google-plus"></i>
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <form id="register" class="input-group">
+                        <input type="text" class="input-field" placeholder="Username" required>
+                        <input type="text" class="input-field" placeholder="Email" required>
+                        <input type="text" class="input-field" placeholder="Password" required>
+                        <button type="submit" class="submit-button">Register</button>
+                    </form>
+                    <form id="login" class="input-group">
+                        <input type="text" class="input-field" placeholder="Username" required>
+                        <input type="text" class="input-field" placeholder="Password" required>
+                        <span id="login-checkbox-span">Remember Password</span>
+                        <input id="check" type="checkbox">
+                        <button type="submit" class="submit-button">Log in</button>
+                    </form>
+                </div>
             </div>
-        </nav>
-    </header>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        var loginFlow = document.getElementById("login");
+        var registerFlow = document.getElementById("register");
+        var buttonFlow = document.getElementById("color-button");
+        function register(){
+            loginFlow.style.left = "-400px";
+            registerFlow.style.left = "50px";
+            buttonFlow.style.left = "110px";
+        }
+        function login(){
+            loginFlow.style.left = "50px";
+            registerFlow.style.left = "450px";
+            buttonFlow.style.left = "0px";
+        }
+    </script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -45,6 +75,5 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
 
     <script src="js/connection.js"></script>
-</body>
-
+    </body>
 </html>

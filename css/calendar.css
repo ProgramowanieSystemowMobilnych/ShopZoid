@@ -1,0 +1,90 @@
+/**COLOR PALETTE FOR PROJECT:
+BACKGROUND, ACTIVE BUTTON: #aee7ff
+NAVBAR: #FFFFFF
+TEXT FILL: #4891D3
+LABELS, SLEEPING BUTTONS: #e5fdff
+
+TEXT FONT: Lato
+ */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body.default {
+    background-image: url("../img/shopping-basket-50-opacity.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: 26% auto;
+    background-color: #aee7ff;
+    font-family: "Lato", sans-serif;
+    color: #4891D3;
+    font-size: 20px;
+}
+.card {
+    background-color:#FFFFFF;
+    padding: 6px;
+    margin-right: 20%;
+    color: #4891D3;
+    font-size: 14px;
+    opacity: 0.9;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+h3 {
+    background-color: #aee7ff;
+    color: #4891D3;
+    font-weight: bold;
+    font-size: 18px;
+}
+#monthAndYear {
+    background-color: #e5fdff;
+    border-bottom: 1px solid #4891D3;
+}
+thead{
+    background-color: #e5fdff;
+    color: #4891D3;
+}
+#calendar-body{
+    background-color: #FFFFFF;
+}
+.form-inline {
+    background-color: #e5fdff;
+    color: #4891D3;
+}
+#chooseDate{
+    border-bottom: 1px solid #4891D3;
+}
+.btn-outline-primary,
+.btn-outline-primary:active,
+.btn-outline-primary:visited
+ {
+    background-color: #e5fdff;
+    border-color: #4891D3;
+    border: none;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus{
+    background-color: #aee7ff;
+    font-weight: bold;
+    color: #4891D3;
+    border: none;
+}
+#month,
+#year {
+    background-color: #e5fdff;
+    border: none;
+    color: #4891D3;
+}
+#jump{
+    font-size: 15px;
+}
+.foot{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 3%;
+    margin-left: 2%;
+    background-color: #e5fdff;
+}

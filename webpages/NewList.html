@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <script defer src="../js/main.js"></script>
+    <!--FAVICONS-->
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <title>ShopZoid | My Lists</title>
+</head>
+<body class="default">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <button class="navbar-toggler navbar"
+                    aria-label="Menu"
+                    type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <a href="NewList.html" class="nav-item nav-link">My Lists</a>
+                <a href="Calendar.html" class="nav-item nav-link">Calendar</a>
+                <a href="Contact.html" class="nav-item nav-link">Contact</a>
+                <a href="../index.html" class="nav-item nav-link ml-auto">Log Out</a>
+            </div>
+        </nav>
+    </header>
+
+    <!--List of every shopping lists-->
+    <div class="container fluid">
+        <div class="row">
+            <div class="all-tasks col">
+                <h3 class="tasks-list-title">Your Shopping lists:</h3>
+                <ul class="task-list" data-lists></ul>
+                <!--ADD NEW LIST-->
+                <form action="" data-new-list-form>
+                    <input required type="text" class="new-list" data-new-list-input placeholder="Add New List" aria-label="Add New List">
+                    <input type="date" class="btn-calendar" data-new-list-input-date id="today">
+                    <button class="btn create" aria-label="Add New List">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="todo-list col" data-list-display-container>
+                <div class="todo-header">
+                    <h3 class="list-title" data-list-title></h3>
+                    <p class="task-count" data-list-count></p>
+                </div>
+                <div class="todo-body">
+                    <div class="tasks" data-tasks></div>
+                    <div class="new-task-creator">
+                        <form action="" data-new-task-form>
+                            <input required type="text" class="new-list" data-new-task-input placeholder="Add New Item" aria-label="Add New Item">
+                            <input type="number" class="list-numbers" data-new-task-input-quantity placeholder="Quantity" aria-label="Quantity">
+                            <input type="number" class="list-numbers" data-new-task-input-price placeholder="Cost of one" aria-label="Price" min="0" step="0.01">
+                            <button class="btn create" aria-label="Add New Item">
+                                <i class="fa fa-plus-circle"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="delete-item">
+                        <button class="btn delete" data-delete-completed-tasks-button>
+                            <i class="fa fa-check-square-o"></i><text class="tip">Delete Completed Tasks</text></button>
+                        <button class="btn delete" data-delete-list-button>
+                            <i class="fa fa-trash"></i><text class="tip">Delete List</text></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--RIGHT COLUMN TEMPLATE FOR EACH ITEM-->
+    <template id="task-template">
+        <div class="task">
+            <input id="task-checkbox" type="checkbox">
+            <label>
+                <span class="custom-checkbox"></span>
+            </label>
+        </div>
+    </template>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
