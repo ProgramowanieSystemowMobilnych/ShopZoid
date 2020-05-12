@@ -23,7 +23,10 @@ const dataNewList = document.querySelector('[btn-calendar]')
 //Save to local storage
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
+var LOCAL_STORAGE_TOTAL_COST_OF_LIST = 'sumTotal'
 
+var sumTotal = 0;
+var sumOfPrices = 0;
 //GET AN LIST FROM LOCAL STORAGE OR IF NOT EXISTS MAKE EMPTY ONE
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
@@ -68,13 +71,16 @@ newListForm.addEventListener('submit', e =>{
 //Type new Item
 newTaskForm.addEventListener('submit', e =>{
     e.preventDefault()
-    var sumOfPrices = newTaskInputQuantity.value * newTaskInputPrice.value
+    sumOfPrices = newTaskInputQuantity.value * newTaskInputPrice.value
     const taskName = newTaskInput.value + ', Quantity: ' + newTaskInputQuantity.value + ', Cost: ' + sumOfPrices +'$'
+    sumTotal = sumOfPrices + sumTotal;
+    document.getElementById('sumTotal').innerHTML = sumTotal + '$'
     if (taskName == null || taskName === '') return
     const task = createTask(taskName)
     newTaskInput.value = null
     newTaskInputQuantity.value = null
     newTaskInputPrice.value = null
+    sumTotal.value = null
     const selectedList = lists.find(list => list.id === selectedListId)
     selectedList.tasks.push(task)
     saveAndRender()
@@ -94,6 +100,7 @@ function saveAndRender() {
 function save(){
     localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
     localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId)
+    localStorage.setItem(LOCAL_STORAGE_TOTAL_COST_OF_LIST, sumTotal)
 }
 
 function render() {
