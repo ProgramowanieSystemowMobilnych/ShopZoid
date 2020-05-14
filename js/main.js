@@ -23,8 +23,15 @@ loginSubmitButton.addEventListener('click', e => {
     e.preventDefault();
     let username = document.getElementById("usernameLogin").value;
     let password = document.getElementById("passwordLogin").value;
-    console.log(username + " " + password);
-    window.location = "webpages/NewList.html";
+    let userRef = db.collection("users").doc(username);
+
+    userRef.get().then(doc => {
+        if (doc.exists && doc.data().password == password) {
+            window.location = "webpages/NewList.html";
+        } else {
+            alert("Invalid username or password");
+        }
+    });
 });
 
 registerSubmitButton.addEventListener('click', e => {
