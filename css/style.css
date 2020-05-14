@@ -1,20 +1,423 @@
 /**COLOR PALETTE FOR PROJECT:
-BACKGROUND: #aee7ff
+BACKGROUND, ACTIVE BUTTON: #aee7ff
 NAVBAR: #FFFFFF
 TEXT FILL: #4891D3
+LABELS, SLEEPING BUTTONS: #e5fdff
 
 TEXT FONT: Lato
  */
-
-body {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #aee7ff;
+    font-family: "Lato", sans-serif;
+    color: #4891D3;
+    font-size: 20px;
+}
+body.default{
     background-image: url("../img/shopping-basket-50-opacity.png");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: 26% auto;
+}
+.plus-icon{
+    font-size: fa-2x;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+}
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: #4891D3;
+}
+a:hover {
+    color: #4485c3;
+}
+.task-list {
+    line-height: 1.7;
+    font-size: 1.4rem;
+    list-style: circle;
+    padding-left: 1.1em;
+}
+.list-name{
+    cursor: pointer;
+}
+.list-name:hover {
+    opacity: 0.7;
+}
+form {
+    display: flex;
+}
+.btn {
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+.btn.create{
+    font-size: 1.7rem;
+    font-weight: 900;
+    margin-right: 0.25em;
+    transition: opacity 250ms ease-in;
+}
+.btn.create:hover{
+    opacity: 0.8;
+    color:inherit;
+}
+.new-list,
+.list-numbers {
+    background: transparent;
+    border: none;
+    color: inherit;
+    border-bottom: 1px solid #4891D3;
+    font-size: inherit;
+    transition: border-bottom 150ms ease-in;
+    padding: 0.25em;
+}
+.list-numbers{
+    width: 18%;
+    font-size: 15px;
+}
+.new-list:focus,
+.input-field:focus,
+.list-numbers:focus{
+    border-bottom-width: 3px;
+}
+.new-list:focus::placeholder,
+.input-field:focus::placeholder
+.list-numbers:focus::placeholder {
+    opacity: 0.2;
+}
+::placeholder{
+    color: #4891D3;
+}
+.active-list{
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.all-tasks { /*LEFT COLUMN*/
+    background: #FFFFFF;
+    top: 50px;
+    opacity: 0.8;
+    margin: 1%;
+    padding: 3%;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.todo-list{ /*RIGHT COLUMN*/
+    background: #FFFFFF;
+    top: 50px;
+    opacity: 0.8;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.todo-header {
+    padding: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.list-title {
+    margin: 0 1em 0  0;
+
+}
+.task-count {
+    margin: 0;
+    font-size: 0.8rem;
+}
+.todo-body{
+    margin-bottom: 15%;
+    padding: 1%;
+    position: relative;
+}
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+.task label{
+    display:inline-flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 0.8 em;
+}
+.task {
+    position: relative;
+}
+.task::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.2;
+}
+.fancy-checkbox input[type="checkbox"] {
+    display: none;
+}
+.fancy-checkbox span:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    width: 1em;
+    height: 1em;
+    content: '\f10c';
+    margin-right: .3em;
+}
+.fancy-checkbox input[type="checkbox"]:checked ~ span:before {
+    content: '\f05d';
+}
+.custom-checkbox {
+    --size: 0.75em;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    margin-right: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+}
+.task:hover .custom-checkbox {
+    transform: scale(1.1);
+}
+[type="checkbox"]:checked + label .custom-checkbox {
+    background: #4891D3;
+    border: #4891D3;
+}
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+.task label::after {
+    content: "";
+    position: absolute;
+    left: 1.5em;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 200ms ease-in-out;
+}
+[type="checkbox"]:checked + label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.delete-item {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    position: absolute;
+}
+.btn.delete {
+    font-size: 25px;
+    letter-spacing: 1px;
+    transition: color 200ms;
+    margin: 6px 6px;
+}
+.btn.delete:hover {
+    color: #4891D3;
+}
+.btn-calendar {
+    background: none;
+    border: none;
+    width: 205px;
+    color: #4891D3;
+    font-size: 24px;
+    letter-spacing: 1px;
+    transition: color 200ms;
+    margin: 6px 6px;
+}
+.btn-calendar:hover {
+    color: #336896;
+}
+/*SIGN UP PAGE*/
+body.signup{
     background-color: #aee7ff;
     font-family: "Lato", sans-serif;
     color: #4891D3;
-    font-size: 20px;
+    font-size: 18px;
+}
+.photo {
+    margin: auto;
+    position: center;
+    max-height: 40%;
+    max-width: 40%;
+    overflow: hidden;
+}
+.brand{
+    margin: auto;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.login{
+    height: 100%;
+    width: 100%;
+}
+#login{
+    left: 50px;
+}
+#register{
+    left: 530px;
+}
+.form-box{
+    width: 380px;
+    height: 540px;
+    position: relative;
+    margin: 6% auto;
+    background: #FFFFFF;
+    padding: 4px;
+    opacity: 0.8;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*MOVING BUTTON*/
+.button-box{
+    width: 240px;
+    margin: 10px auto;
+    position: relative;
+    box-shadow: 0 0 15px 1px #aee7ff;
+    border-radius: 20px;
+}
+.toggle-btn{
+    color:  #4891D3;
+    font-weight: bold;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#color-button{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 54%;
+    height: 100%;
+    background: #aee7ff;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.social-icons{
+    margin: 20px auto;
+    text-align: center;
+    width: 150px;
+    border-bottom: solid 1px #4891D3;
+}
+.social-icons i{
+    width: 40px;
+    position: relative;
+    cursor: pointer;
+}
+.input-group{
+    top: 320px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field{
+    width: 100%;
+    padding: 8px 0;
+    margin: 2px 0;
+    border: none;
+    border-bottom: 1px solid #4891D3;
+    outline: none;
+    background: transparent;
+    font-size: inherit;
+    transition: border-bottom 150ms ease-in;
+    padding: 0.25em;
+}
+.submit-button{
+    color: #4891D3;
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin: 15px;
+    background: #e5fdff;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+}
+.submit-button:hover{
+    color: inherit;
+    font-weight: bold;
+    background-color: #aee7ff;
+}
+#check {
+    opacity: 1;
+    position: relative;
+    margin: 10px 0 0 -2px;
+}
+#login-checkbox-span {
+    color:#4891D3;
+    font-size: 13px;
+    position: relative;
+    margin: 7px 8px;
+}
+/*CONTACT FORM*/
+.form-contact{
+    width: 50%;
+    height: 90%;
+    position: relative;
+    margin: 4% auto;
+    padding: 1%;
+    background: #FFFFFF;
+    opacity: 0.8;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.tasks-list-title {
+    border-bottom: 1px solid #4891D3;
+    padding: 4px;
+}
+.contact-h3{
+    font-weight: bold;
+    font-size: 26px;
+}
+.tip {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+/*CONTACT COLUMNS*/
+.left,
+.right {
+    justify-content: center;
+    text-align: center;
+}
+.left{
+    font-size: 18px;
+}
+.right{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/*RIGHT SIDE*/
+.photo-contact{
+    width: 65%;
+    margin-left: 17%;
+}
+.brand-contact{
+    font-size: 25px;
+    font-weight: bold;
+}
+.hidden{
+    display: none;
 }
