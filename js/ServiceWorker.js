@@ -1,14 +1,6 @@
 const cacheFiles = [
     './',
     './index.html',
-    './favicons/icon-72x72.png',
-    './favicons/icon-96x96.png',
-    './favicons/icon-128x128.png',
-    './favicons/icon-144x144.png',
-    './favicons/icon-152x152.png',
-    './favicons/icon-192x192.png',
-    './favicons/icon-384x384.png',
-    './favicons/icon-512x512.png',
     './css/styles.css',
     './js/main.js'
 ];
