@@ -1,6 +1,12 @@
 const cacheFiles = [
     './',
     './index.html',
+    './img/icons/android-icon-36x36.png',
+    './img/icons/android-icon-48x48.png',
+    './img/icons/android-icon-72x72.png',
+    './img/icons/android-icon-96x96.png',
+    './img/icons/android-icon-144x144.png',
+    './img/icons/android-icon-192x192.png',
     './css/styles.css',
     './js/main.js'
 ];
