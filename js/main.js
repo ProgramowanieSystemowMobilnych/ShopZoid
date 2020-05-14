@@ -119,8 +119,10 @@ newListForm.addEventListener('submit', e => {
 //Type new Item
 newTaskForm.addEventListener('submit', e => {
     e.preventDefault()
-    var sumOfPrices = newTaskInputQuantity.value * newTaskInputPrice.value
-    const taskName = newTaskInput.value + ', Quantity: ' + newTaskInputQuantity.value + ', Cost: ' + sumOfPrices + '$'
+
+    sumOfPrices = newTaskInputQuantity.value * newTaskInputPrice.value
+    const taskName = newTaskInput.value + ', Quantity: ' + newTaskInputQuantity.value + ', Cost: ' + sumOfPrices +'$'
+
     if (taskName == null || taskName === '') return
     const task = createTask(taskName)
     newTaskInput.value = null
