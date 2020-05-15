@@ -19,41 +19,53 @@ const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const registerSubmitButton = document.querySelector("#registerSubmitButton");
 
 //placeholder function for AUTH
-loginSubmitButton.addEventListener('click', e => {
-    e.preventDefault();
-    let username = document.getElementById("usernameLogin").value;
-    let password = document.getElementById("passwordLogin").value;
-    let userRef = db.collection("users").doc(username);
+if (loginSubmitButton != null) {
+    loginSubmitButton.addEventListener('click', e => {
+        e.preventDefault();
+        let username = document.getElementById("usernameLogin").value;
+        let password = document.getElementById("passwordLogin").value;
+        let userRef = db.collection("users").doc(username);
 
-    userRef.get().then(doc => {
-        if (doc.exists && doc.data().password == password) {
-            window.location = "webpages/NewList.html";
-        } else {
-            alert("Invalid username or password");
-        }
-    });
-});
-
-registerSubmitButton.addEventListener('click', e => {
-    e.preventDefault();
-    let username = document.getElementById("usernameRegister").value;
-    let email = document.getElementById("emailRegister").value;
-    let password = document.getElementById("passwordRegister").value;
-
-    db.collection("users").doc(username).set({
-            username: username,
-            email: email,
-            password: password
-        }).then(function() {
-            console.log("Document successfully written!");
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
+        userRef.get().then(doc => {
+            if (doc.exists && doc.data().password == password) {
+                sessionStorage.setItem('username', username);
+                window.location = "webpages/NewList.html";
+            } else {
+                alert("Invalid username or password");
+            }
         });
-    login();
-    $('#usernameLogin').val(username);
-    $('#passwordLogin').val(password);
-});
+    });
+};
+
+if (registerSubmitButton != null) {
+    registerSubmitButton.addEventListener('click', e => {
+        e.preventDefault();
+        let username = document.getElementById("usernameRegister").value;
+        let email = document.getElementById("emailRegister").value;
+        let password = document.getElementById("passwordRegister").value;
+
+        db.collection("users").doc(username).set({
+                username: username,
+                email: email,
+                password: password
+            }).then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        login();
+        $('#usernameLogin').val(username);
+        $('#passwordLogin').val(password);
+    });
+};
+function storeList(list) {
+    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).set(list);
+}
+
+function storeTask(task) {
+    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).set(task);
+}
 
 const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')
@@ -75,9 +87,18 @@ const dataNewList = document.querySelector('[btn-calendar]')
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
 
+// get lists from DB when loading once
+const listsFromDB = [];
+db.collection(sessionStorage.getItem('username') + "-lists")
+            .get()
+            .then((snapshot) => {
+                snapshot.docs.forEach((doc) => {
+                    listsFromDB.push(doc.data());
+                });
+            });
 //GET AN LIST FROM LOCAL STORAGE OR IF NOT EXISTS MAKE EMPTY ONE
-let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
-let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
+let lists = JSON.parse(sessionStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || listsFromDB;
+let selectedListId = sessionStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
 
 listsContainer.addEventListener('click', e => {
     if (e.target.tagName.toLowerCase() === 'li') {
@@ -110,6 +131,9 @@ newListForm.addEventListener('submit', e => {
     const listName = newListInput.value + ', Created: ' + newListInputDate.value
     if (listName == null || listName === '') return
     const list = createList(listName)
+    // storage of new list to database
+    storeList(list);
+
     newListInput.value = null
     lists.push(list)
     render()
@@ -121,15 +145,23 @@ newTaskForm.addEventListener('submit', e => {
     e.preventDefault()
 
     sumOfPrices = newTaskInputQuantity.value * newTaskInputPrice.value
-    const taskName = newTaskInput.value + ', Quantity: ' + newTaskInputQuantity.value + ', Cost: ' + sumOfPrices +'$'
+    const taskName = newTaskInput.value + ', Quantity: ' + newTaskInputQuantity.value + ', Cost: ' + sumOfPrices + '$'
 
     if (taskName == null || taskName === '') return
     const task = createTask(taskName)
+
+    // storage of new task to database
+    storeTask(task);
+
     newTaskInput.value = null
     newTaskInputQuantity.value = null
     newTaskInputPrice.value = null
     const selectedList = lists.find(list => list.id === selectedListId)
     selectedList.tasks.push(task)
+
+    // update list to contain added task
+    storeList(selectedList);
+
     saveAndRender()
 })
 
@@ -150,13 +182,15 @@ function createTask(name) {
 }
 
 function saveAndRender() {
+    // in expire.js
+    checkIfExpiredSession();
     save()
     render()
 }
 
 function save() {
-    localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
-    localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId)
+    sessionStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
+    sessionStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId)
 }
 
 function render() {
