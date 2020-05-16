@@ -61,11 +61,39 @@ if (registerSubmitButton != null) {
 };
 
 function storeList(list) {
-    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).set(list);
+    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).set(list)
+        .then(function() {
+            console.log("List successfully created/updated!");
+        }).catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
 }
 
 function storeTask(task) {
-    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).set(task);
+    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).set(task)
+        .then(function() {
+            console.log("Task successfully created/updated!");
+        }).catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+}
+
+function deleteListFromDB(list) {
+    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).delete()
+        .then(function() {
+            console.log("List successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+}
+
+function deleteTaskFromDB(task) {
+    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).delete()
+        .then(function() {
+            console.log("Task successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
 }
 
 const listsContainer = document.querySelector('[data-lists]')
@@ -115,16 +143,32 @@ tasksContainer.addEventListener('click', e => {
         const selectedList = lists.find(list => list.id === selectedListId)
         const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
         selectedTask.complete = e.target.checked
+        // store updated task and list
+        storeTask(selectedTask);
+        storeList(selectedList);
+
         save()
         renderTaskCount(selectedList)
     }
 })
 clearCompleteTasksButton.addEventListener('click', e => {
     const selectedList = lists.find(list => list.id === selectedListId)
+    // removing all complete tasks from DB in this list
+    for (const task of selectedList.tasks) {
+        if (task.complete) {
+            deleteTaskFromDB(task);
+        }
+    }
     selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+    // updating list that contained those tasks
+    storeList(selectedList);
     saveAndRender()
 })
 deleteListButton.addEventListener('click', e => {
+    // removing from DB
+    let listToDelete = lists.find(list => list.id == selectedListId)
+    deleteListFromDB(listToDelete);
+
     lists = lists.filter(list => list.id !== selectedListId)
     selectedListId = null
     saveAndRender()
