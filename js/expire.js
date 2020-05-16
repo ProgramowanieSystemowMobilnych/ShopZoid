@@ -3,6 +3,7 @@
 function checkIfExpiredSession() {
     if (sessionStorage.getItem('username') == null) {
         alert("Session Expired!");
+        sessionStorage.clear();
         window.location = "../index.html";
     }
 }

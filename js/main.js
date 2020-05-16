@@ -59,6 +59,7 @@ if (registerSubmitButton != null) {
         $('#passwordLogin').val(password);
     });
 };
+
 function storeList(list) {
     db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).set(list);
 }
@@ -90,15 +91,18 @@ const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
 // get lists from DB when loading once
 const listsFromDB = [];
 db.collection(sessionStorage.getItem('username') + "-lists")
-            .get()
-            .then((snapshot) => {
-                snapshot.docs.forEach((doc) => {
-                    listsFromDB.push(doc.data());
-                });
-            });
+    .get()
+    .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+            listsFromDB.push(doc.data());
+        });
+        // render when all data taken
+        render();
+    }).catch(err => console.log(err));
+
 //GET AN LIST FROM LOCAL STORAGE OR IF NOT EXISTS MAKE EMPTY ONE
 let lists = JSON.parse(sessionStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || listsFromDB;
-let selectedListId = sessionStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
+let selectedListId = sessionStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
 listsContainer.addEventListener('click', e => {
     if (e.target.tagName.toLowerCase() === 'li') {
