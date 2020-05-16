@@ -15,11 +15,16 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 var db = firebase.firestore();
 
+
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const registerSubmitButton = document.querySelector("#registerSubmitButton");
 
-//placeholder function for AUTH
+//function for AUTH
 if (loginSubmitButton != null) {
+    if (localStorage.getItem('username') != null && localStorage.getItem('password') != null) {
+        $('#usernameLogin').val(localStorage.getItem('username'));
+        $('#passwordLogin').val(localStorage.getItem('password'));
+    }
     loginSubmitButton.addEventListener('click', e => {
         e.preventDefault();
         let username = document.getElementById("usernameLogin").value;
@@ -29,6 +34,11 @@ if (loginSubmitButton != null) {
         userRef.get().then(doc => {
             if (doc.exists && doc.data().password == password) {
                 sessionStorage.setItem('username', username);
+                // remember user & password in local storage
+                if (document.getElementById("check").checked == true) {
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('password', password);
+                }
                 window.location = "webpages/NewList.html";
             } else {
                 alert("Invalid username or password");
@@ -146,7 +156,6 @@ tasksContainer.addEventListener('click', e => {
         // store updated task and list
         storeTask(selectedTask);
         storeList(selectedList);
-
         save()
         renderTaskCount(selectedList)
     }
