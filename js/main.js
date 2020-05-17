@@ -18,7 +18,12 @@ var db = firebase.firestore();
 
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const registerSubmitButton = document.querySelector("#registerSubmitButton");
-
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceWorker.js')
+        .then(function() {
+            console.log('SW registered');
+        });
+}
 //function for AUTH
 if (loginSubmitButton != null) {
     if (localStorage.getItem('username') != null && localStorage.getItem('password') != null) {
