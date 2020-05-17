@@ -15,11 +15,16 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 var db = firebase.firestore();
 
+
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const registerSubmitButton = document.querySelector("#registerSubmitButton");
 
-//placeholder function for AUTH
+//function for AUTH
 if (loginSubmitButton != null) {
+    if (localStorage.getItem('username') != null && localStorage.getItem('password') != null) {
+        $('#usernameLogin').val(localStorage.getItem('username'));
+        $('#passwordLogin').val(localStorage.getItem('password'));
+    }
     loginSubmitButton.addEventListener('click', e => {
         e.preventDefault();
         let username = document.getElementById("usernameLogin").value;
@@ -29,6 +34,11 @@ if (loginSubmitButton != null) {
         userRef.get().then(doc => {
             if (doc.exists && doc.data().password == password) {
                 sessionStorage.setItem('username', username);
+                // remember user & password in local storage
+                if (document.getElementById("check").checked == true) {
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('password', password);
+                }
                 window.location = "webpages/NewList.html";
             } else {
                 alert("Invalid username or password");
@@ -59,12 +69,41 @@ if (registerSubmitButton != null) {
         $('#passwordLogin').val(password);
     });
 };
+
 function storeList(list) {
-    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).set(list);
+    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).set(list)
+        .then(function() {
+            console.log("List successfully created/updated!");
+        }).catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
 }
 
 function storeTask(task) {
-    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).set(task);
+    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).set(task)
+        .then(function() {
+            console.log("Task successfully created/updated!");
+        }).catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+}
+
+function deleteListFromDB(list) {
+    db.collection(sessionStorage.getItem('username') + "-lists").doc(list.id).delete()
+        .then(function() {
+            console.log("List successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+}
+
+function deleteTaskFromDB(task) {
+    db.collection(sessionStorage.getItem('username') + "-tasks").doc(task.id).delete()
+        .then(function() {
+            console.log("Task successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
 }
 
 const listsContainer = document.querySelector('[data-lists]')
@@ -90,15 +129,18 @@ const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
 // get lists from DB when loading once
 const listsFromDB = [];
 db.collection(sessionStorage.getItem('username') + "-lists")
-            .get()
-            .then((snapshot) => {
-                snapshot.docs.forEach((doc) => {
-                    listsFromDB.push(doc.data());
-                });
-            });
+    .get()
+    .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+            listsFromDB.push(doc.data());
+        });
+        // render when all data taken
+        render();
+    }).catch(err => console.log(err));
+
 //GET AN LIST FROM LOCAL STORAGE OR IF NOT EXISTS MAKE EMPTY ONE
 let lists = JSON.parse(sessionStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || listsFromDB;
-let selectedListId = sessionStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
+let selectedListId = sessionStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
 listsContainer.addEventListener('click', e => {
     if (e.target.tagName.toLowerCase() === 'li') {
@@ -111,16 +153,31 @@ tasksContainer.addEventListener('click', e => {
         const selectedList = lists.find(list => list.id === selectedListId)
         const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
         selectedTask.complete = e.target.checked
+        // store updated task and list
+        storeTask(selectedTask);
+        storeList(selectedList);
         save()
         renderTaskCount(selectedList)
     }
 })
 clearCompleteTasksButton.addEventListener('click', e => {
     const selectedList = lists.find(list => list.id === selectedListId)
+    // removing all complete tasks from DB in this list
+    for (const task of selectedList.tasks) {
+        if (task.complete) {
+            deleteTaskFromDB(task);
+        }
+    }
     selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+    // updating list that contained those tasks
+    storeList(selectedList);
     saveAndRender()
 })
 deleteListButton.addEventListener('click', e => {
+    // removing from DB
+    let listToDelete = lists.find(list => list.id == selectedListId)
+    deleteListFromDB(listToDelete);
+
     lists = lists.filter(list => list.id !== selectedListId)
     selectedListId = null
     saveAndRender()
