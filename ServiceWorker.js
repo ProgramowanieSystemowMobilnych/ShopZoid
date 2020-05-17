@@ -1,9 +1,6 @@
 const cacheFiles = [
     './',
     './index.html',
-    './img/favicon-16x16.png',
-    '.img/favicon-32x32.png',
-    '.img/favicon-96x96.png',
     './img/icons/android-icon-36x36.png',
     './img/icons/android-icon-48x48.png',
     './img/icons/android-icon-72x72.png',
