@@ -19,7 +19,7 @@ var db = firebase.firestore();
 const loginSubmitButton = document.querySelector("#loginSubmitButton");
 const registerSubmitButton = document.querySelector("#registerSubmitButton");
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceWorker.js')
+    navigator.serviceWorker.register('serviceWorker.js')
         .then(function() {
             console.log('SW registered');
         });
