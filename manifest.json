@@ -6,7 +6,7 @@
  "display": "standalone",
  "orientation": "portrait",
  "scope": "/",
- "start_url": "webpages/User.html",
+ "start_url": ".",
  "description": "This application helps you in shopping",
 
 "icons": [
